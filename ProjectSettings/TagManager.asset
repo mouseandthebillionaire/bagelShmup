@@ -6,7 +6,10 @@ TagManager:
   tags:
   - wall
   - paddle
-  - brick
+  - Undefined
+  - Enemy
+  - Projectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

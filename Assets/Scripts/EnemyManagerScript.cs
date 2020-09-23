@@ -9,7 +9,10 @@ public class EnemyManagerScript : MonoBehaviour {
     public float xSpacing, ySpacing;
     public float xOrigin, yOrigin;
     public int numRows, numColumns;
-    
+
+    public float speed = 2f;
+    public float amplitude = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +23,19 @@ public class EnemyManagerScript : MonoBehaviour {
                 
                 Vector2 loc = new Vector2(xOrigin + (i * xSpacing), yOrigin - (j * ySpacing));
                 go.transform.position = loc;
-
-                Color          c  = brickColors[j];
-                SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
-                sr.color = c;
                 
+                SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+
             }
         }
+    }
+
+    void Update()
+    {
+        // move side to side
+        float offset = Mathf.Sin(Time.time * speed) * amplitude / 2;
+        transform.position = new Vector2(offset, transform.position.y);
+        
     }
 
 }
